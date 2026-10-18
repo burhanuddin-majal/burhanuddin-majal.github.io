@@ -2,114 +2,116 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Burhanuddin Majal — Python developer, web creator, and AI prompt engineering enthusiast.">
-  <meta name="theme-color" content="#080b14">
-  <title>Burhanuddin Majal — Developer Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Burhanuddin Majal — developer, builder, and AI explorer. Enter the dark side of the build.">
+  <meta name="theme-color" content="#07070b">
+  <meta property="og:title" content="Burhanuddin Majal — Digital Outlier">
+  <meta property="og:description" content="Building strange ideas into real things. Python, web, AI, and experiments.">
+  <title>Burhanuddin Majal // Digital Outlier</title>
   <style>
     :root {
       color-scheme: dark;
-      --bg: #080b14; --bg-soft: #0e1423; --panel: rgba(17, 25, 43, .78);
-      --panel-solid: #11192b; --text: #f5f7ff; --muted: #a8b4cf;
-      --accent: #9b8cff; --accent-2: #55f0d2; --line: rgba(180, 198, 255, .15);
-      --shadow: 0 24px 80px rgba(0,0,0,.28); --nav: rgba(8,11,20,.76);
+      --bg:#07070b; --bg2:#0d0b12; --panel:rgba(18,14,23,.78);
+      --text:#f7f4fb; --muted:#aaa1b5; --red:#ff3158; --red2:#a50032;
+      --violet:#9c6bff; --line:rgba(255,255,255,.11);
+      --glow:0 0 35px rgba(255,49,88,.15),0 25px 80px rgba(0,0,0,.45);
+      --nav:rgba(7,7,11,.78);
     }
     html[data-theme="light"] {
-      color-scheme: light;
-      --bg: #f5f7ff; --bg-soft: #edf1ff; --panel: rgba(255,255,255,.82);
-      --panel-solid: #fff; --text: #151a2b; --muted: #59647d;
-      --accent: #6250d8; --accent-2: #087e76; --line: rgba(36,48,90,.15);
-      --shadow: 0 24px 80px rgba(40,48,100,.12); --nav: rgba(245,247,255,.82);
+      color-scheme:light; --bg:#f5f1f5; --bg2:#ebe4ed; --panel:rgba(255,255,255,.84);
+      --text:#1b101c; --muted:#665768; --red:#d10d3b; --red2:#7b0628;
+      --violet:#7041c8; --line:rgba(30,12,35,.14); --glow:0 20px 60px rgba(74,16,58,.12);
+      --nav:rgba(245,241,245,.82);
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-    body {
-      margin: 0; color: var(--text); background: var(--bg);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65; overflow-x: hidden; transition: background .25s, color .25s;
-    }
-    body::before {
-      content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
-      background: radial-gradient(ellipse at 78% 8%, rgba(115,88,255,.18), transparent 34%),
-                  radial-gradient(ellipse at 8% 43%, rgba(28,221,199,.09), transparent 30%);
-    }
-    body::after {
-      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .16;
-      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
-      background-size: 54px 54px; mask-image: linear-gradient(to bottom, black, transparent 78%);
-    }
-    a { color: inherit; text-decoration: none; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    button { font: inherit; }
-    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
-    .topbar { position: sticky; top: 0; z-index: 20; background: var(--nav); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); }
-    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand { font-weight: 900; font-size: 1.2rem; letter-spacing: -.06em; }
-    .brand span { color: var(--accent-2); }
-    .nav-right, .navlinks { display: flex; align-items: center; gap: 22px; }
-    .navlinks a { color: var(--muted); font-size: .92rem; transition: color .2s; }
-    .navlinks a:hover { color: var(--text); }
-    .theme-toggle { border: 1px solid var(--line); color: var(--text); background: var(--panel); border-radius: 12px; width: 42px; height: 42px; display: grid; place-items: center; cursor: pointer; }
-    .theme-toggle:hover { border-color: var(--accent); transform: translateY(-1px); }
-    .hero { min-height: 77vh; padding: 88px 0 76px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: clamp(28px, 6vw, 75px); }
-    .eyebrow { display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: .14em; color: var(--accent-2); font-size: .79rem; font-weight: 850; }
-    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-2), transparent 55%); animation: pulse 2s infinite; }
-    h1 { font-size: clamp(2.9rem, 7vw, 5.7rem); line-height: .99; letter-spacing: -.075em; margin: 22px 0; }
-    .gradient { background: linear-gradient(105deg, var(--text) 8%, var(--accent) 57%, var(--accent-2)); color: transparent; background-clip: text; -webkit-background-clip: text; }
-    .lead { color: var(--muted); max-width: 590px; font-size: clamp(1rem, 2vw, 1.15rem); }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 12px 17px; border-radius: 12px; font-weight: 800; border: 1px solid var(--line); transition: transform .2s, border-color .2s, box-shadow .2s; cursor: pointer; }
-    .btn:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 8px 28px rgba(120,100,255,.14); }
-    .btn-primary { color: white; background: linear-gradient(110deg, #8876ff, #6553d7); border-color: transparent; }
-    .btn-secondary { background: var(--panel); }
-    .terminal { position: relative; padding: 22px; border: 1px solid var(--line); border-radius: 22px; background: var(--panel); box-shadow: var(--shadow); overflow: hidden; animation: float 6s ease-in-out infinite; }
-    .terminal::before { content: ""; position: absolute; width: 180px; height: 180px; top: -100px; right: -65px; background: var(--accent); filter: blur(75px); opacity: .28; }
-    .terminal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 15px; position: relative; }
-    .traffic { display: flex; gap: 7px; } .traffic i { width: 9px; height: 9px; border-radius: 50%; background: #ff7272; } .traffic i:nth-child(2) { background: #ffd166; } .traffic i:nth-child(3) { background: #5ee6a8; }
-    .terminal-label { font: .76rem ui-monospace, monospace; color: var(--muted); }
-    pre { margin: 20px 0 4px; white-space: pre-wrap; overflow-wrap: anywhere; font: clamp(.76rem, 1.4vw, .92rem)/1.95 ui-monospace, SFMono-Regular, Consolas, monospace; position: relative; }
-    .tok-purple { color: #b5a9ff; } .tok-green { color: #62e9c6; } .tok-orange { color: #ffcb91; } .tok-muted { color: var(--muted); }
-    section { padding: 70px 0; }
-    .section-head { margin-bottom: 28px; max-width: 720px; }
-    .kicker { color: var(--accent-2); font-size: .76rem; font-weight: 900; text-transform: uppercase; letter-spacing: .17em; }
-    h2 { margin: 8px 0 12px; font-size: clamp(2rem, 4.3vw, 3.25rem); line-height: 1.1; letter-spacing: -.055em; }
-    .section-head p, .muted { color: var(--muted); }
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
-    .card { position: relative; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); box-shadow: 0 12px 35px rgba(0,0,0,.04); transition: transform .25s, border-color .25s, background .25s; }
-    .card:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--accent), transparent 35%); }
-    .icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; margin-bottom: 18px; background: color-mix(in srgb, var(--accent), transparent 86%); font-size: 1.35rem; }
-    .card h3 { margin: 0 0 8px; font-size: 1.13rem; letter-spacing: -.02em; }
-    .card p { margin: 0; color: var(--muted); font-size: .94rem; }
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 23px; }
-    .chip { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--panel); font-size: .88rem; }
-    .project { display: flex; flex-direction: column; min-height: 270px; }
-    .project-tag { font-size: .75rem; font-weight: 900; color: var(--accent-2); text-transform: uppercase; letter-spacing: .12em; }
-    .project-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; padding-top: 22px; }
-    .text-link { font-size: .88rem; font-weight: 800; color: var(--accent); }
-    .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
-    .hint { font-size: .84rem; color: var(--muted); margin-top: 18px; }
-    .contact-box { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: clamp(25px, 5vw, 48px); border: 1px solid color-mix(in srgb, var(--accent), transparent 65%); border-radius: 24px; background: linear-gradient(120deg, color-mix(in srgb, var(--accent), transparent 88%), color-mix(in srgb, var(--accent-2), transparent 93%)); }
-    .contact-box p { color: var(--muted); margin-bottom: 0; }
-    footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted); font-size: .88rem; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    @keyframes pulse { 70% { box-shadow: 0 0 0 9px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
-    @keyframes float { 0%,100% { transform: translateY(0) rotate(.5deg); } 50% { transform: translateY(-9px) rotate(-.4deg); } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
-    @media (max-width: 800px) { .hero { grid-template-columns: 1fr; padding-top: 65px; min-height: auto; } .terminal { max-width: 620px; } .grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .navlinks { gap: 14px; } }
-    @media (max-width: 560px) { .wrap { width: calc(100% - 30px); } .navlinks { gap: 12px; } .navlinks a { font-size: .8rem; } .navlinks a:nth-child(2) { display: none; } .nav-right { gap: 12px; } .grid { grid-template-columns: 1fr; } .contact-box { align-items: flex-start; flex-direction: column; } .hero { padding: 55px 0; } }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;color:var(--text);background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(ellipse at 78% 14%,rgba(255,20,73,.17),transparent 33%),radial-gradient(ellipse at 12% 54%,rgba(122,41,255,.12),transparent 32%),radial-gradient(ellipse at 50% 100%,rgba(100,0,31,.14),transparent 40%)}
+    body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.13;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+    a{color:inherit;text-decoration:none}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}
+    .wrap{width:min(1140px,calc(100% - 42px));margin-inline:auto}
+    .topbar{position:sticky;top:0;z-index:30;background:var(--nav);border-bottom:1px solid var(--line);backdrop-filter:blur(20px)}
+    nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:950;font-size:1.12rem;letter-spacing:-.07em;display:flex;align-items:center;gap:10px}
+    .brand-mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--red);color:var(--red);transform:rotate(-8deg);box-shadow:0 0 20px rgba(255,49,88,.18);font-size:.8rem}
+    .brand span:last-child{color:var(--red)}
+    .nav-right,.navlinks{display:flex;align-items:center;gap:22px}
+    .navlinks a{color:var(--muted);font-size:.88rem;transition:color .2s}
+    .navlinks a:hover{color:var(--red)}
+    .theme-toggle{border:1px solid var(--line);color:var(--text);background:var(--panel);border-radius:10px;width:40px;height:40px;cursor:pointer}
+    .theme-toggle:hover{border-color:var(--red)}
+    .hero{min-height:82vh;padding:86px 0 75px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:clamp(28px,6vw,80px)}
+    .eyebrow,.kicker,.project-tag{display:inline-flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--red);font-size:.72rem;font-weight:900}
+    .pulse{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 13px var(--red);animation:pulse 2s infinite}
+    h1{font-size:clamp(3.2rem,8vw,6.6rem);line-height:.91;letter-spacing:-.085em;margin:24px 0;font-weight:950}
+    .gradient{color:transparent;background:linear-gradient(105deg,var(--red),#ff7892 45%,var(--violet));background-clip:text;-webkit-background-clip:text}
+    .lead{color:var(--muted);max-width:590px;font-size:clamp(1rem,2vw,1.12rem)}
+    .lead strong{color:var(--text)}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:12px 17px;border-radius:9px;font-weight:850;font-size:.9rem;border:1px solid var(--line);transition:transform .2s,border-color .2s,box-shadow .2s;cursor:pointer}
+    .btn:hover{transform:translateY(-3px);border-color:var(--red);box-shadow:0 8px 30px rgba(255,49,88,.16)}
+    .btn-primary{color:#fff;background:linear-gradient(110deg,#ff3158,#a90037);border-color:transparent;box-shadow:0 0 28px rgba(255,49,88,.18)}
+    .btn-secondary{background:var(--panel)}
+    .hero-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:32px;color:var(--muted);font-size:.78rem;letter-spacing:.04em}
+    .hero-meta span:before{content:"//";color:var(--red);margin-right:7px;font-weight:900}
+    .core-wrap{position:relative;min-height:390px;display:grid;place-items:center}
+    .orbit{position:absolute;width:min(360px,85vw);aspect-ratio:1;border:1px solid rgba(255,49,88,.28);border-radius:50%;animation:spin 28s linear infinite}
+    .orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(156,107,255,.24);border-radius:50%;inset:22px}
+    .orbit:after{inset:48px;border-style:dashed;border-color:rgba(255,49,88,.25)}
+    .orbit-dot{position:absolute;top:12%;left:19%;width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 22px var(--red)}
+    .core{position:relative;width:min(270px,70vw);aspect-ratio:1;display:grid;place-items:center;text-align:center;border:1px solid rgba(255,49,88,.45);background:linear-gradient(145deg,rgba(255,49,88,.12),rgba(156,107,255,.05) 55%,rgba(0,0,0,.1));clip-path:polygon(50% 0,91% 19%,100% 60%,70% 100%,24% 92%,0 48%,17% 13%);box-shadow:var(--glow)}
+    .core:before{content:"";position:absolute;inset:13px;border:1px solid var(--line);clip-path:inherit}
+    .core-inner{padding:24px}
+    .core-symbol{font-size:4rem;line-height:1;color:var(--red);text-shadow:0 0 28px rgba(255,49,88,.55)}
+    .core-title{margin-top:18px;font:800 .75rem ui-monospace,SFMono-Regular,monospace;letter-spacing:.17em}
+    .core-sub{color:var(--muted);font: .65rem ui-monospace,monospace;margin-top:7px}
+    .floating-label{position:absolute;border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(12px);padding:8px 11px;border-radius:7px;font: .7rem ui-monospace,monospace;color:var(--muted)}
+    .label-a{top:13%;right:0}.label-b{bottom:12%;left:0}.label-c{bottom:2%;right:9%;color:var(--red)}
+    section{padding:72px 0}
+    .section-head{margin-bottom:28px;max-width:740px}
+    h2{margin:9px 0 12px;font-size:clamp(2rem,4.5vw,3.45rem);line-height:1.05;letter-spacing:-.065em}
+    .section-head p,.muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .card{position:relative;padding:25px;border:1px solid var(--line);background:var(--panel);border-radius:13px;box-shadow:0 15px 45px rgba(0,0,0,.08);overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+    .card:before{content:"";position:absolute;top:0;left:0;width:42px;height:2px;background:var(--red);box-shadow:0 0 18px var(--red)}
+    .card:hover{transform:translateY(-5px);border-color:rgba(255,49,88,.48);box-shadow:var(--glow)}
+    .icon{display:grid;place-items:center;width:45px;height:45px;border:1px solid rgba(255,49,88,.22);border-radius:10px;margin-bottom:18px;background:rgba(255,49,88,.07);font-size:1.25rem}
+    .card h3{margin:0 0 8px;font-size:1.08rem;letter-spacing:-.025em}
+    .card p{margin:0;color:var(--muted);font-size:.92rem}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}
+    .chip{padding:7px 12px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:var(--panel);font-size:.83rem}
+    .project{display:flex;flex-direction:column;min-height:278px}
+    .project-tag{font-size:.68rem;margin-bottom:9px}
+    .project-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:auto;padding-top:22px}
+    .text-link{font-size:.86rem;font-weight:850;color:var(--red)}
+    .text-link:hover{text-decoration:underline;text-underline-offset:4px}
+    .hint{font-size:.82rem;color:var(--muted);margin-top:18px}
+    .status-row{display:flex;align-items:center;gap:10px;color:var(--muted);font: .74rem ui-monospace,monospace;margin-top:15px}
+    .status-row .pulse{width:6px;height:6px}
+    .contact-box{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:clamp(25px,5vw,48px);border:1px solid rgba(255,49,88,.36);border-radius:15px;background:linear-gradient(120deg,rgba(255,49,88,.10),rgba(156,107,255,.06) 70%,transparent);box-shadow:var(--glow)}
+    .contact-box p{color:var(--muted);margin-bottom:0}
+    footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.84rem}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .scanline{position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.035;background:repeating-linear-gradient(to bottom,transparent 0,transparent 3px,#fff 4px)}
+    @keyframes pulse{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+    @media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:65px;min-height:auto}.core-wrap{min-height:350px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.navlinks{gap:13px}}
+    @media(max-width:560px){.wrap{width:calc(100% - 30px)}.navlinks{gap:11px}.navlinks a{font-size:.78rem}.navlinks a:nth-child(2),.navlinks a:nth-child(4){display:none}.nav-right{gap:10px}.grid{grid-template-columns:1fr}.contact-box{align-items:flex-start;flex-direction:column}.hero{padding:52px 0}.core-wrap{min-height:320px}.floating-label{font-size:.62rem}}
   </style>
 </head>
 <body>
+  <div class="scanline" aria-hidden="true"></div>
   <header class="topbar">
     <nav class="wrap" aria-label="Main navigation">
-      <a class="brand" href="https://burhanuddin-majal.github.io" aria-label="Burhanuddin Majal home">BM<span>.</span></a>
+      <a class="brand" href="#home" aria-label="Burhanuddin Majal home"><span class="brand-mark">BM</span><span>BURHANUDDIN<span>.</span></span></a>
       <div class="nav-right">
         <div class="navlinks">
-          <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#github">GitHub</a><a href="#contact">Contact</a>
+          <a href="#about">About</a><a href="#skills">Arsenal</a><a href="#projects">Projects</a><a href="#github">GitHub</a><a href="#contact">Contact</a>
         </div>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle light/dark mode">☼</button>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle theme">☼</button>
       </div>
     </nav>
   </header>
@@ -117,100 +119,67 @@
   <main>
     <section class="wrap hero" id="home">
       <div class="reveal">
-        <div class="eyebrow"><span class="pulse"></span> Developer • Builder • AI Explorer</div>
-        <h1>Ideas into<br><span class="gradient">digital reality.</span></h1>
-        <p class="lead">Hey, I'm <strong>Burhanuddin Majal</strong> — a young developer exploring Python, HTML, and AI prompt engineering. I enjoy turning curious ideas into useful projects and learning something new with every build.</p>
+        <div class="eyebrow"><span class="pulse"></span> Independent mind // Builder mode</div>
+        <h1>NOT HERE<br>TO <span class="gradient">BLEND IN.</span></h1>
+        <p class="lead">I'm <strong>Burhanuddin Majal</strong> — a young developer exploring Python, web creation, and AI. I turn late-night ideas into real experiments, learn by building, and keep pushing each project further.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="#projects">Explore projects <span aria-hidden="true">↗</span></a>
-          <a class="btn btn-secondary" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">GitHub profile <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-primary" href="#projects">Enter the projects <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">Access GitHub <span aria-hidden="true">↗</span></a>
         </div>
+        <div class="hero-meta"><span>Python + Web</span><span>AI exploration</span><span>Always building</span></div>
       </div>
-      <div class="terminal reveal" aria-label="Code sample">
-        <div class="terminal-head"><div class="traffic"><i></i><i></i><i></i></div><span class="terminal-label">burhanuddin.py</span></div>
-        <pre><span class="tok-purple">class</span> Developer:
-    name = <span class="tok-green">"Burhanuddin Majal"</span>
-    focus = [
-        <span class="tok-orange">"Python"</span>,
-        <span class="tok-orange">"HTML & Web"</span>,
-        <span class="tok-orange">"AI Prompts"</span>
-    ]
-
-    <span class="tok-purple">def</span> build(self, idea):
-        <span class="tok-muted"># Learn. Create. Improve.</span>
-        <span class="tok-purple">return</span> <span class="tok-green">f"Building: {idea}"</span></pre>
+      <div class="core-wrap reveal" aria-label="Abstract dark futuristic energy core">
+        <div class="orbit"><span class="orbit-dot"></span></div>
+        <div class="core"><div class="core-inner"><div class="core-symbol" aria-hidden="true">✦</div><div class="core-title">DARK MODE: ACTIVE</div><div class="core-sub">IDEAS // IN PROGRESS</div></div></div>
+        <div class="floating-label label-a">SYS.STATUS: ONLINE</div>
+        <div class="floating-label label-b">CREATIVE_ENGINE.exe</div>
+        <div class="floating-label label-c">NO LIMITS // JUST BUILDS</div>
       </div>
     </section>
 
     <section class="wrap reveal" id="about">
-      <div class="section-head"><div class="kicker">01 / About</div><h2>Curious by nature.<br>Creative by code.</h2><p>I'm learning by making things, experimenting with ideas, and solving problems one step at a time. My goal is to keep improving and build projects that are both fun and useful.</p></div>
-      <div class="chips"><span class="chip">💡 Creative problem-solving</span><span class="chip">🧠 AI exploration</span><span class="chip">🛠️ Hands-on learning</span><span class="chip">🚀 Always improving</span></div>
+      <div class="section-head"><div class="kicker">01 / Identity</div><h2>Curiosity with<br>a darker edge.</h2><p>I learn by making things, testing ideas, and solving problems one build at a time. This is my corner of the internet: a record of what I'm learning, what I'm creating, and what comes next.</p></div>
+      <div class="chips"><span class="chip">✦ Creative problem-solving</span><span class="chip">⌘ AI exploration</span><span class="chip">⟡ Hands-on learning</span><span class="chip">↗ Always evolving</span></div>
     </section>
 
     <section class="wrap reveal" id="skills">
-      <div class="section-head"><div class="kicker">02 / Toolkit</div><h2>Skills I'm building</h2><p>My current focus areas as I grow as a developer.</p></div>
+      <div class="section-head"><div class="kicker">02 / Arsenal</div><h2>Tools of the trade.</h2><p>Current focus areas. The toolkit grows with every experiment.</p></div>
       <div class="grid">
-        <article class="card"><div class="icon">🐍</div><h3>Python Development</h3><p>Scripts, automation ideas, and small tools that help solve everyday problems.</p></article>
-        <article class="card"><div class="icon">🌐</div><h3>HTML & Web</h3><p>Building web pages and exploring how to create clear, responsive experiences.</p></article>
-        <article class="card"><div class="icon">✨</div><h3>AI Prompt Engineering</h3><p>Crafting clear instructions and structured prompts to get more useful results from AI tools.</p></article>
+        <article class="card"><div class="icon">⌘</div><h3>Python Development</h3><p>Scripts, automation concepts, and small tools designed to solve everyday problems.</p></article>
+        <article class="card"><div class="icon">⌬</div><h3>Web Engineering</h3><p>HTML, responsive layouts, interface experiments, and building for the browser.</p></article>
+        <article class="card"><div class="icon">✳</div><h3>AI & Prompt Design</h3><p>Exploring AI tools, crafting structured prompts, and finding useful ways to work smarter.</p></article>
       </div>
     </section>
 
     <section class="wrap reveal" id="projects">
-      <div class="section-head"><div class="kicker">03 / Portfolio</div><h2>Projects & experiments</h2><p>Explore my GitHub profile and replace these example project links with individual repository URLs as I publish projects.</p></div>
+      <div class="section-head"><div class="kicker">03 / Field Work</div><h2>Proof of creation.</h2><p>Experiments, tools, and web creations. Browse the repositories for source code and current work.</p></div>
       <div class="grid">
-        <article class="card project">
-          <div class="icon">⌨️</div><div class="project-tag">Python</div><h3>Python Tools</h3><p>Utilities, scripts, and automation experiments built to make tasks easier.</p>
-          <div class="project-links"><a class="text-link" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a></div>
-        </article>
-        <article class="card project">
-          <div class="icon">🖥️</div><div class="project-tag">Web development</div><h3>Web Creations</h3><p>Responsive pages and website experiments made while learning HTML and front-end design.</p>
-          <div class="project-links"><a class="text-link" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">Source code ↗</a><a class="text-link" href="#contact">Live demo soon ↗</a></div>
-        </article>
-        <article class="card project">
-          <div class="icon">🤖</div><div class="project-tag">Artificial intelligence</div><h3>Prompt Lab</h3><p>Experiments with prompt design, AI-assisted workflows, and creative ideas.</p>
-          <div class="project-links"><a class="text-link" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">Explore on GitHub ↗</a></div>
-        </article>
+        <article class="card project"><div class="icon">⌨</div><div class="project-tag">01 // Python</div><h3>Python Tools</h3><p>Utilities, scripts, and automation experiments built to make tasks easier.</p><div class="project-links"><a class="text-link" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">Explore source ↗</a></div></article>
+        <article class="card project"><div class="icon">▣</div><div class="project-tag">02 // Web</div><h3>Web Creations</h3><p>Responsive pages and interface experiments made while learning front-end design.</p><div class="project-links"><a class="text-link" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">View repositories ↗</a><a class="text-link" href="#contact">Connect ↗</a></div></article>
+        <article class="card project"><div class="icon">✳</div><div class="project-tag">03 // AI</div><h3>Prompt Lab</h3><p>Experiments with prompt design, AI-assisted workflows, and creative ideas.</p><div class="project-links"><a class="text-link" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">Explore on GitHub ↗</a></div></article>
       </div>
-      <p class="hint">Project links currently open my GitHub profile. Update each link with its specific repository URL when the project is published.</p>
+      <p class="hint">These cards currently link to my GitHub profile; individual project URLs can be added as each project is published.</p>
     </section>
 
     <section class="wrap reveal" id="github">
-      <div class="section-head"><div class="kicker">04 / GitHub</div><h2>My coding journey</h2><p>Follow my repositories and explore what I'm building.</p></div>
+      <div class="section-head"><div class="kicker">04 / Network</div><h2>Open-source footprint.</h2><p>Follow the commits, inspect the code, and see what I'm working on.</p></div>
       <div class="grid">
-        <article class="card">
-          <h3>GitHub Stats</h3>
-          <p>My public GitHub activity and repository overview.</p>
-          <p style="margin-top:16px"><a href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer" class="text-link">View my GitHub profile ↗</a></p>
-          <img src="https://github-readme-stats.vercel.app/api?username=burhanuddin-majal&show_icons=true&theme=tokyonight&hide_border=true" alt="Burhanuddin Majal GitHub statistics" loading="lazy" style="display:block;width:100%;max-width:420px;height:auto;margin-top:18px;border-radius:12px">
-        </article>
-        <article class="card">
-          <h3>Top Languages</h3>
-          <p>A snapshot of languages detected in my public repositories.</p>
-          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=burhanuddin-majal&layout=compact&theme=tokyonight&hide_border=true" alt="Most used programming languages in Burhanuddin Majal's public repositories" loading="lazy" style="display:block;width:100%;max-width:420px;height:auto;margin-top:18px;border-radius:12px">
-        </article>
-        <article class="card">
-          <div class="icon">🐙</div><h3>@burhanuddin-majal</h3><p>Browse my source code, discover projects, and follow my progress as I keep learning.</p>
-          <div class="project-links"><a class="text-link" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">Open GitHub ↗</a></div>
-        </article>
+        <article class="card"><h3>GitHub Stats</h3><p>Public activity and repository overview.</p><img src="https://github-readme-stats.vercel.app/api?username=burhanuddin-majal&show_icons=true&theme=transparent&hide_border=true&title_color=ff3158&icon_color=9c6bff&text_color=aaa1b5&bg_color=00000000" alt="Burhanuddin Majal GitHub statistics" loading="lazy" style="display:block;width:100%;max-width:420px;height:auto;margin-top:18px;border-radius:10px"><p style="margin-top:16px"><a href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer" class="text-link">View profile ↗</a></p></article>
+        <article class="card"><h3>Top Languages</h3><p>A snapshot of languages detected in public repositories.</p><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=burhanuddin-majal&layout=compact&theme=transparent&hide_border=true&title_color=ff3158&text_color=aaa1b5&bg_color=00000000" alt="Most used programming languages in Burhanuddin Majal's public repositories" loading="lazy" style="display:block;width:100%;max-width:420px;height:auto;margin-top:18px;border-radius:10px"></article>
+        <article class="card"><div class="icon">⌘</div><h3>@burhanuddin-majal</h3><p>Source code, experiments, and the journey behind each build.</p><div class="status-row"><span class="pulse"></span> PUBLIC PROFILE // READY</div><div class="project-links"><a class="text-link" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">Open GitHub ↗</a></div></article>
       </div>
-      <p class="hint">GitHub stats cards are provided by an external service and may occasionally be unavailable.</p>
+      <p class="hint">GitHub statistics cards use an external service and may occasionally be unavailable.</p>
     </section>
 
     <section class="wrap reveal" id="contact">
-      <div class="contact-box">
-        <div><div class="kicker">05 / Connect</div><h2>Let's build something cool.</h2><p>Have a project idea or want to share something you've built? Explore my work on GitHub.</p></div>
-        <a class="btn btn-primary" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">Visit GitHub <span aria-hidden="true">↗</span></a>
-      </div>
-      <p class="hint">For online safety, share project links rather than your private phone number, home address, or school details.</p>
+      <div class="contact-box"><div><div class="kicker">05 / Make contact</div><h2>Got an idea?<br>Let's make it real.</h2><p>Want to explore a project or see what I'm building? Start with my public GitHub profile.</p></div><a class="btn btn-primary" href="https://github.com/burhanuddin-majal" target="_blank" rel="noopener noreferrer">Connect on GitHub <span aria-hidden="true">↗</span></a></div>
+      <p class="hint">For online safety, share project links rather than private contact details, your home address, or school information.</p>
     </section>
   </main>
 
-  <footer><div class="wrap footer-inner"><span>© <span id="year"></span> Burhanuddin Majal</span><span>Made with curiosity <span aria-hidden="true">✦</span> and code.</span></div></footer>
+  <footer><div class="wrap footer-inner"><span>© <span id="year"></span> Burhanuddin Majal</span><span>BUILT IN THE DARK <span style="color:var(--red)" aria-hidden="true">✦</span> MADE TO EVOLVE.</span></div></footer>
   <script>
-    // Update the footer year automatically.
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Theme toggle: remembers the choice in this browser when storage is available.
     const root = document.documentElement;
     const toggle = document.getElementById("themeToggle");
     function applyTheme(theme) {
@@ -218,7 +187,7 @@
       const light = theme === "light";
       toggle.textContent = light ? "☾" : "☼";
       toggle.setAttribute("aria-label", light ? "Switch to dark mode" : "Switch to light mode");
-      document.querySelector('meta[name="theme-color"]').setAttribute("content", light ? "#f5f7ff" : "#080b14");
+      document.querySelector('meta[name="theme-color"]').setAttribute("content", light ? "#f5f1f5" : "#07070b");
     }
     let savedTheme = null;
     try { savedTheme = localStorage.getItem("bm-portfolio-theme"); } catch (e) {}
@@ -228,22 +197,15 @@
       applyTheme(next);
       try { localStorage.setItem("bm-portfolio-theme", next); } catch (e) {}
     });
-
-    // Reveal sections as they enter the viewport; respect reduced-motion preferences.
     const revealItems = document.querySelectorAll(".reveal");
     if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
+          if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
         });
       }, { threshold: 0.12 });
       revealItems.forEach(item => observer.observe(item));
-    } else {
-      revealItems.forEach(item => item.classList.add("visible"));
-    }
+    } else { revealItems.forEach(item => item.classList.add("visible")); }
   </script>
 </body>
 </html>
